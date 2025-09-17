@@ -1,38 +1,34 @@
-wrangler.toml
-
-
 name = "leverageai-portfolio"
+main = "workers.ts"
 compatibility_date = "2024-09-16"
 compatibility_flags = ["nodejs_compat"]
 
 [env.production]
 name = "leverageai-portfolio"
-route = { pattern = "leverageai.com/api/*", zone_name = "leverageai.com" }
+# route = { pattern = "leverageai.com/api/*", zone_name = "leverageai.com" }
 
 [[env.production.kv_namespaces]]
 binding = "PORTFOLIO_KV"
-id = "your_production_kv_namespace_id"
+id = "0156f1b6a9b94dcb9c1aafed50b61c3f"
 
 [[env.production.kv_namespaces]]
 binding = "CONTACTS_KV"
-id = "your_production_contacts_kv_namespace_id"
+id = "9ea9c8d991a84797bc711f79caae67f9"
 
 [env.staging]
 name = "leverageai-portfolio-staging"
-route = { pattern = "staging.leverageai.com/api/*", zone_name = "leverageai.com" }
+# route = { pattern = "staging.leverageai.com/api/*", zone_name = "leverageai.com" }
 
 [[env.staging.kv_namespaces]]
 binding = "PORTFOLIO_KV"
-id = "your_staging_kv_namespace_id"
+id = "9f83b25f5d86412f8e74993f71fa69f3"
 
 [[env.staging.kv_namespaces]]
 binding = "CONTACTS_KV"
-id = "your_staging_contacts_kv_namespace_id"
+id = "90058e70f6904931af0c8311ff88fe9c"
 
-[build]
-command = "npm run build"
 
-[vars]
+[env.production.vars]
 ENVIRONMENT = "production"
 
 [env.staging.vars]

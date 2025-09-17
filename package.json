@@ -1,25 +1,22 @@
-package.json
-
 {
   "name": "leverageai-portfolio-api",
   "version": "1.0.0",
   "description": "Cloudflare Workers API for LEVERAGEAI LLC portfolio",
   "private": true,
   "scripts": {
-    "build": "tsc && wrangler publish",
+    "build": "tsc",
     "dev": "wrangler dev",
-    "deploy": "wrangler publish",
-    "deploy:staging": "wrangler publish --env staging",
-    "deploy:production": "wrangler publish --env production",
-    "setup": "bash deploy.sh",
+    "deploy": "wrangler deploy",
+    "deploy:staging": "wrangler deploy --env staging",
+    "deploy:production": "wrangler deploy --env production",
+    "setup": "bash Deploy.sh",
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240909.0",
     "typescript": "^5.5.4",
-    "wrangler": "^3.75.0"
+    "wrangler": "^4.37.1"
   },
-  "dependencies": {},
   "engines": {
     "node": ">=18.0.0"
   }

@@ -1,5 +1,3 @@
- workers.ts
-
 interface Env {
   PORTFOLIO_KV: KVNamespace;
   CONTACTS_KV: KVNamespace;
@@ -25,7 +23,7 @@ const corsHeaders = {
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
-    
+
     // Handle CORS preflight
     if (request.method === 'OPTIONS') {
       return new Response(null, { headers: corsHeaders });
@@ -34,8 +32,8 @@ export default {
     // Health check
     if (url.pathname === '/api/health') {
       return Response.json(
-        { 
-          status: 'healthy', 
+        {
+          status: 'healthy',
           environment: env.ENVIRONMENT,
           timestamp: new Date().toISOString()
         },
@@ -47,7 +45,7 @@ export default {
     if (url.pathname === '/api/contact' && request.method === 'POST') {
       try {
         const data: ContactRequest = await request.json();
-        
+
         // Validate required fields
         if (!data.name || !data.email || !data.message) {
           return Response.json(
