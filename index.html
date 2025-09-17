@@ -1,0 +1,807 @@
+Portfolio Showcase leverage ai
+https://claude.ai/chat/a1965376-396f-43e0-8c60-8555bfc76bdc?artifactId=portfolio_page_complete
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEVERAGEAI - Complete Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background: #1a1a1a;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00ff88;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #00ff88;
+        }
+        
+        .cta-header {
+            background: #00ff88;
+            color: #1a1a1a;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+            text-decoration: none;
+        }
+        
+        .cta-header:hover {
+            transform: translateY(-2px);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+        
+        .portfolio-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ff88;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .portfolio-section {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: #f0f0f0;
+            color: #666;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #00ff88;
+            color: #1a1a1a;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .portfolio-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #00ff88;
+        }
+        
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .portfolio-card:hover .portfolio-image {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-info {
+            padding: 2rem;
+        }
+        
+        .portfolio-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+        
+        .portfolio-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .portfolio-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-tag {
+            background: #f0f0f0;
+            color: #666;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .portfolio-card:hover .tech-tag {
+            background: #e6ffe6;
+            color: #00cc6a;
+        }
+        
+        .portfolio-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            flex: 1;
+        }
+        
+        .portfolio-link:hover {
+            color: #00cc6a;
+        }
+        
+        .portfolio-link::after {
+            content: '→';
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-link:hover::after {
+            transform: translateX(3px);
+        }
+        
+        .new-badge {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 2;
+        }
+        
+        .featured-badge {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #1a1a1a;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 2;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-primary {
+            background: #00ff88;
+            color: #1a1a1a;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: 2px solid white;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,255,136,0.4);
+        }
+        
+        .cta-secondary:hover {
+            background: white;
+            color: #764ba2;
+        }
+        
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-stats {
+                gap: 2rem;
+            }
+            
+            .filter-tabs {
+                gap: 0.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-primary, .cta-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">LEVERAGEAI</div>
+                <nav class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#contact" class="cta-header">Get Started</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Our Portfolio</h1>
+            <p>High-performance websites and applications that deliver real business results</p>
+            <div class="portfolio-stats">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2-4</div>
+                    <div class="stat-label">Hours Average Build</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95+</div>
+                    <div class="stat-label">Performance Score</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="portfolio-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">From business websites to advanced AI applications - see what we've built for our clients</p>
+            </div>
+            
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="business">Business Sites</button>
+                <button class="filter-btn" data-filter="ai">AI Applications</button>
+                <button class="filter-btn" data-filter="tools">Development Tools</button>
+                <button class="filter-btn" data-filter="local">Local Business</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- Daley Organics -->
+                <div class="portfolio-card" data-category="business local" onclick="window.open('https://daleyorganics.com/', '_blank')">
+                    <div class="featured-badge">Featured</div>
+                    <img src="https://codahosted.io/docs/VPX0BAm4i9/blobs/bl-LiGEn--8zo/8a1c09d925ee475f4ed94802ac9c065f006fe25c72f10269f3aaaa307db51290ec977638574c1e4e32322a298fefab459f702e62385a4d4bd0d94d19a3b778ede1ce6197530dce9c3e3c433fa4f0a0c2399fec3c3c3e7a3578b076cac31a5501650e97c7" alt="Daley Organics" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Daley Organics</h3>
+                        <p class="portfolio-description">Main website for organic products and sustainable farming solutions with integrated e-commerce.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">E-commerce</span>
+                            <span class="tech-tag">Organic</span>
+                            <span class="tech-tag">Sustainability</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="https://daleyorganics.com/" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daley Organics Blog -->
+                <div class="portfolio-card" data-category="business local" onclick="window.open('http://daleyorganicsblog.ceo-a53.workers.dev/#home', '_blank')">
+                    <img src="https://codahosted.io/docs/VPX0BAm4i9/blobs/bl-Fnv3auEZrH/b4f966716e84e91f86eb03f689a6f5fdced19c1109f7a46924938a5219c58d849320f7f3b7e5d649942c97881f92753ae775d93c442dc6bced7ea45f3ab4e801f0700f110fb774f201020ffe561fbd9cdb89f9c64ea079481f7b030e0313b53144ddf7d9" alt="Daley Organics Blog" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Daley Organics Blog</h3>
+                        <p class="portfolio-description">Knowledge hub for organic farming tips and sustainable living practices.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">Blog</span>
+                            <span class="tech-tag">Education</span>
+                            <span class="tech-tag">Organic</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="http://daleyorganicsblog.ceo-a53.workers.dev/#home" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matt Weaver Real Estate -->
+                <div class="portfolio-card" data-category="business local" onclick="window.open('https://matt-weaver-realty-showcase.lovable.app/', '_blank')">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23364458'/%3E%3Cg fill='%23F4D03F'%3E%3Ccircle cx='320' cy='70' r='30' fill='%23fff'/%3E%3Crect x='290' y='50' width='60' height='40' rx='20' fill='%23fff'/%3E%3C/g%3E%3Ctext x='40' y='80' font-family='Arial' font-size='28' font-weight='bold' fill='%23F4D03F'%3EMatt Weaver%3C/text%3E%3Ctext x='40' y='105' font-family='Arial' font-size='14' fill='%23fff'%3EReal Estate Professional%3C/text%3E%3Ctext x='40' y='140' font-family='Arial' font-size='12' fill='%23ccc'%3E500+ Homes Sold%3C/text%3E%3Ctext x='40' y='160' font-family='Arial' font-size='12' fill='%23ccc'%3E15+ Years Experience%3C/text%3E%3Ctext x='40' y='180' font-family='Arial' font-size='12' fill='%23ccc'%3E98%25 Client Satisfaction%3C/text%3E%3Crect x='40' y='200' width='120' height='30' rx='4' fill='%23F4D03F'/%3E%3Ctext x='100' y='220' font-family='Arial' font-size='12' font-weight='bold' fill='%23364458' text-anchor='middle'%3EFree Consultation%3C/text%3E%3C/svg%3E" alt="Matt Weaver Real Estate" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Matt Weaver Real Estate</h3>
+                        <p class="portfolio-description">Professional real estate showcase featuring property listings and agent credentials.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">Real Estate</span>
+                            <span class="tech-tag">Professional</span>
+                            <span class="tech-tag">Showcase</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="https://matt-weaver-realty-showcase.lovable.app/" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bill Generator -->
+                <div class="portfolio-card" data-category="tools" onclick="window.open('https://invoice-template-pdf.lovable.app/', '_blank')">
+                    <div class="new-badge">New</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23f8f9fa'/%3E%3Crect x='30' y='30' width='340' height='190' rx='8' fill='%23fff' stroke='%23e9ecef' stroke-width='2'/%3E%3Ctext x='50' y='60' font-family='Arial' font-size='24' font-weight='bold' fill='%23333'%3EBill Generator%3C/text%3E%3Crect x='50' y='80' width='100' height='20' rx='4' fill='%23e9ecef'/%3E%3Crect x='170' y='80' width='80' height='20' rx='4' fill='%23e9ecef'/%3E%3Crect x='50' y='110' width='300' height='15' rx='3' fill='%23f8f9fa'/%3E%3Crect x='50' y='130' width='250' height='15' rx='3' fill='%23f8f9fa'/%3E%3Crect x='50' y='150' width='280' height='15' rx='3' fill='%23f8f9fa'/%3E%3Ctext x='280' y='200' font-family='Arial' font-size='16' font-weight='bold' fill='%2300ff88'%3ETotal: $0.00%3C/text%3E%3Crect x='280' y='180' width='70' height='2' fill='%2300ff88'/%3E%3C/svg%3E" alt="Bill Generator" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Professional Bill Generator</h3>
+                        <p class="portfolio-description">Advanced invoice generator with multiple templates, currency support, and PDF export functionality.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">Invoice</span>
+                            <span class="tech-tag">PDF Generation</span>
+                            <span class="tech-tag">Business Tools</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="https://invoice-template-pdf.lovable.app/" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Architect -->
+                <div class="portfolio-card" data-category="ai" onclick="window.open('https://leverage-agentic-flow.lovable.app/', '_blank')">
+                    <div class="featured-badge">Featured</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='space' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23667eea'/%3E%3Cstop offset='100%25' style='stop-color:%23764ba2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23space)'/%3E%3Ccircle cx='100' cy='100' r='40' fill='%23fff' opacity='0.9'/%3E%3Ccircle cx='300' cy='150' r='35' fill='%23fff' opacity='0.8'/%3E%3Ctext x='50' y='60' font-family='Arial' font-size='16' font-weight='bold' fill='%23F4D03F'%3ESystems Architect • Anthropic Certified%3C/text%3E%3Ctext x='50' y='190' font-family='Arial' font-size='28' font-weight='bold' fill='%23fff'%3EMike Schlottig%3C/text%3E%3Ctext x='50' y='210' font-family='Arial' font-size='12' fill='%23ccc'%3EAgentic Infrastructure Solutions%3C/text%3E%3C/svg%3E" alt="System Architect" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Systems Architect Portfolio</h3>
+                        <p class="portfolio-description">Professional showcase for Mike Schlottig featuring agentic infrastructure and specialized autonomous teams.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">AI Systems</span>
+                            <span class="tech-tag">Architecture</span>
+                            <span class="tech-tag">Professional</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="https://leverage-agentic-flow.lovable.app/" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grants Pass Vibes -->
+                <div class="portfolio-card" data-category="local" onclick="window.open('https://preview--grants-pass-vibes.lovable.app/', '_blank')">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='nature' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300bcd4'/%3E%3Cstop offset='100%25' style='stop-color:%2326a69a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23nature)'/%3E%3Ctext x='200' y='80' font-family='Arial' font-size='32' font-weight='bold' fill='%23fff' text-anchor='middle'%3EWelcome to%3C/text%3E%3Ctext x='200' y='120' font-family='Arial' font-size='40' font-weight='bold' fill='%23FF6B35' text-anchor='middle'%3EGrants Pass, Oregon%3C/text%3E%3Ctext x='200' y='160' font-family='Arial' font-size='14' fill='%23fff' text-anchor='middle' opacity='0.9'%3EDiscover natural beauty and outdoor adventures%3C/text%3E%3Crect x='150' y='180' width='100' height='30' rx='15' fill='%23FF6B35'/%3E%3Ctext x='200' y='200' font-family='Arial' font-size='12' font-weight='bold' fill='%23fff' text-anchor='middle'%3EExplore Grants Pass%3C/text%3E%3C/svg%3E" alt="Grants Pass Vibes" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Grants Pass Vibes</h3>
+                        <p class="portfolio-description">Local tourism and community website showcasing the natural beauty and outdoor adventures of Grants Pass, Oregon.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">Tourism</span>
+                            <span class="tech-tag">Local Community</span>
+                            <span class="tech-tag">Oregon</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="https://preview--grants-pass-vibes.lovable.app/" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second Brain -->
+                <div class="portfolio-card" data-category="ai tools" onclick="window.open('https://leverage-second-brain.lovable.app/', '_blank')">
+                    <div class="new-badge">New</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23141B2D'/%3E%3Ctext x='200' y='60' font-family='Arial' font-size='24' font-weight='bold' fill='%234A90E2' text-anchor='middle'%3EYour Personal AI Engine%3C/text%3E%3Ctext x='200' y='85' font-family='Arial' font-size='12' fill='%23999' text-anchor='middle'%3EAll your notes, bookmarks, and inspirations%3C/text%3E%3Ctext x='200' y='100' font-family='Arial' font-size='12' fill='%23999' text-anchor='middle'%3Ein one private second brain%3C/text%3E%3Ccircle cx='200' cy='140' r='30' fill='none' stroke='%234A90E2' stroke-width='2'/%3E%3Ccircle cx='200' cy='140' r='15' fill='%234A90E2' opacity='0.3'/%3E%3Crect x='120' y='120' width='20' height='15' rx='3' fill='%234A90E2' opacity='0.6'/%3E%3Crect x='260' y='130' width='15' height='20' rx='3' fill='%234A90E2' opacity='0.6'/%3E%3Crect x='180' y='95' width='15' height='15' rx='3' fill='%234A90E2' opacity='0.4'/%3E%3Crect x='205' y='180' width='20' height='15' rx='3' fill='%234A90E2' opacity='0.5'/%3E%3C/svg%3E" alt="Second Brain" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">LEVERAGE Second Brain</h3>
+                        <p class="portfolio-description">Personal AI engine for managing notes, bookmarks, inspirations, and knowledge in a private, intelligent system.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">AI Assistant</span>
+                            <span class="tech-tag">Knowledge Management</span>
+                            <span class="tech-tag">Personal Productivity</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="https://leverage-second-brain.lovable.app/" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oregon SMB Directory -->
+                <div class="portfolio-card" data-category="business local" onclick="window.open('https://oregonsmbdirectory.com/', '_blank')">
+                    <img src="https://codahosted.io/docs/VPX0BAm4i9/blobs/bl-5tlAeARkSk/7c3334e015b527a9cfc480aea4a26802a242698f7fe9d305f1c851b883d39542ec23eed818328776f090f6406e468801623f5036454b2a5bc533ddbf455d6f77f569755eaeca2984bd1580c214b65e53fc19252f8b49c551c2082dfe451fce866591e6c2" alt="Oregon SMB Directory" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Oregon SMB Directory</h3>
+                        <p class="portfolio-description">Comprehensive business directory for small and medium businesses in Oregon.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">Web Design</span>
+                            <span class="tech-tag">Directory</span>
+                            <span class="tech-tag">Business</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="https://oregonsmbdirectory.com/" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leverage AI Master -->
+                <div class="portfolio-card" data-category="ai business" onclick="window.open('https://master.leverageai-website.pages.dev/', '_blank')">
+                    <img src="https://codahosted.io/docs/VPX0BAm4i9/blobs/bl-uS0GKXeGCm/623c8b696b50733c24185298621c8427e6272b490306c2e9988c67a5a0b633118cececb44f4819b83a8c297914f5b527b05acafa2da06300c768e09f8430bb642aa87a9a82ad6712d35f12695051ffef24f9b19174c18d9c76ae363f24d43d6da90778ef" alt="Leverage AI Master" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Leverage AI Master Website</h3>
+                        <p class="portfolio-description">Main portfolio website showcasing AI solutions and services.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Portfolio</span>
+                            <span class="tech-tag">Web Development</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="https://master.leverageai-website.pages.dev/" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medford Bud Watch -->
+                <div class="portfolio-card" data-category="local tools" onclick="window.open('https://medford-bud-watch.lovable.app/', '_blank')">
+                    <img src="https://codahosted.io/docs/VPX0BAm4i9/blobs/bl-wWeTrQv1bk/b325e3420b44bfc4342b3870005261a0e3a298662ac114323d17885b311a2637f468c66e38aea5bb4a5aae63cf0fc7a2abc8b6656ab4a6c0064b63704dce41596dc85d87fb93a13371cdcf50755e64234b16b8576ab1253ef9370ce2486bab8035088042" alt="Medford Bud Watch" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Medford Bud Watch</h3>
+                        <p class="portfolio-description">Cannabis tracking and information platform for Medford area.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">Cannabis</span>
+                            <span class="tech-tag">Tracking</span>
+                            <span class="tech-tag">Local</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="https://medford-bud-watch.lovable.app/" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Turn Based Chess -->
+                <div class="portfolio-card" data-category="tools" onclick="window.open('https://turn-based-chess-duel-019.lovable.app/', '_blank')">
+                    <img src="https://codahosted.io/docs/VPX0BAm4i9/blobs/bl-nSP8E_oeok/a5c4bcd88aab31f1c29a6a6d1880bf52704d00c2aba20bd0cab03e94f71f518a777e8fee4ec2898a77ab2a350eaeadebc8e7e5a60049e3e80cf893cd1a9f6d2872cba0065e80ca5aee96ebcbc0c960866d434545bc487f0fb464f5ed98a71d3c22b5e98f" alt="Turn Based Chess" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Turn Based Chess Duel</h3>
+                        <p class="portfolio-description">Interactive chess game with turn-based gameplay mechanics.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">Games</span>
+                            <span class="tech-tag">Chess</span>
+                            <span class="tech-tag">Interactive</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="https://turn-based-chess-duel-019.lovable.app/" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specwise AI Code -->
+                <div class="portfolio-card" data-category="ai tools" onclick="window.open('https://specwise-ai-code.lovable.app/', '_blank')">
+                    <img src="https://codahosted.io/docs/VPX0BAm4i9/blobs/bl-I9h0hmce2m/01857d8766115978bdc581a4371eee12d069dbec787d0c88d7b2e206c923b0d11a9344a87df73a87fe47ffcd82faa13944f992e0b5f3aba91827bd0bf420f5fd379f05a131ef04d0761e7c7b3dfc84333e9b2ddf3109b815990e1faca55e06d6619a5b9d" alt="Specwise AI Code" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Specwise AI Code</h3>
+                        <p class="portfolio-description">AI-powered code generation and specification tool for developers.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">Code Generation</span>
+                            <span class="tech-tag">Development</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="https://specwise-ai-code.lovable.app/" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gold Hill Visions -->
+                <div class="portfolio-card" data-category="local business" onclick="window.open('https://golden-hill-visions.lovable.app/', '_blank')">
+                    <div class="new-badge">New</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='mountains' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2387CEEB'/%3E%3Cstop offset='100%25' style='stop-color:%232E8B57'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23mountains)'/%3E%3Cpolygon points='0,180 80,120 160,140 240,100 320,130 400,110 400,250 0,250' fill='%23228B22' opacity='0.8'/%3E%3Cpolygon points='60,200 140,140 220,160 300,120 380,140 400,135 400,250 0,250' fill='%2332CD32' opacity='0.6'/%3E%3Ccircle cx='350' cy='50' r='25' fill='%23FFD700' opacity='0.9'/%3E%3Ctext x='200' y='80' font-family='Arial' font-size='24' font-weight='bold' fill='%23fff' text-anchor='middle'%3EDiscover Gold Hill%3C/text%3E%3Ctext x='200' y='100' font-family='Arial' font-size='16' fill='%23fff' text-anchor='middle'%3EOregon%3C/text%3E%3Ctext x='200' y='130' font-family='Arial' font-size='12' fill='%23fff' text-anchor='middle' opacity='0.9'%3EOutdoor Adventures %26 Local Business%3C/text%3E%3Crect x='150' y='150' width='100' height='25' rx='12' fill='%23333' opacity='0.8'/%3E%3Ctext x='200' y='167' font-family='Arial' font-size='10' font-weight='bold' fill='%23fff' text-anchor='middle'%3EExplore Gold Hill%3C/text%3E%3C/svg%3E" alt="Gold Hill Visions" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Gold Hill Visions</h3>
+                        <p class="portfolio-description">Showcase of Gold Hill outdoor recreation with links to hikes, rafting, and our local business directory.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">Lucide-React</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Vite</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="https://golden-hill-visions.lovable.app/" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oregon Wonder Guide -->
+                <div class="portfolio-card" data-category="local business" onclick="window.open('https://oregon-wonder-guide.lovable.app/', '_blank')">
+                    <div class="featured-badge">Featured</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Cdefs%3E%3ClinearGradient id='wilderness' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%234682B4'/%3E%3Cstop offset='50%25' style='stop-color:%236B8E23'/%3E%3Cstop offset='100%25' style='stop-color:%23228B22'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='250' fill='url(%23wilderness)'/%3E%3Cpolygon points='0,150 100,80 200,100 300,60 400,90 400,250 0,250' fill='%23556B2F' opacity='0.9'/%3E%3Cpolygon points='50,180 150,120 250,140 350,100 400,120 400,250 0,250' fill='%236B8E23' opacity='0.7'/%3E%3Cpolygon points='320,60 340,40 360,60 340,80' fill='%23D2B48C'/%3E%3Cpolygon points='180,100 200,70 220,100 200,120' fill='%23D2B48C'/%3E%3Cpolygon points='80,80 100,50 120,80 100,100' fill='%23D2B48C'/%3E%3Ctext x='200' y='60' font-family='Arial' font-size='20' font-weight='bold' fill='%23fff' text-anchor='middle'%3EOregon%27s Wonder Guide%3C/text%3E%3Ctext x='200' y='85' font-family='Arial' font-size='11' fill='%23fff' text-anchor='middle' opacity='0.9'%3EPristine Beauty %26 Untamed Wilderness%3C/text%3E%3Crect x='50' y='200' width='80' height='20' rx='10' fill='rgba(255,255,255,0.2)' stroke='%23fff'/%3E%3Ctext x='90' y='213' font-family='Arial' font-size='9' fill='%23fff' text-anchor='middle'%3ESee Development%3C/text%3E%3Crect x='150' y='200' width='80' height='20' rx='10' fill='%232E8B57'/%3E%3Ctext x='190' y='213' font-family='Arial' font-size='9' font-weight='bold' fill='%23fff' text-anchor='middle'%3EExplore Oregon%3C/text%3E%3C/svg%3E" alt="Oregon Wonder Guide" class="portfolio-image">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Oregon Wonder Guide</h3>
+                        <p class="portfolio-description">Oregon outdoor showcase and business development opportunities, serving as a gateway to oregonsmbdirectory.com.</p>
+                        <div class="portfolio-technologies">
+                            <span class="tech-tag">Tourism</span>
+                            <span class="tech-tag">Business Development</span>
+                            <span class="tech-tag">Oregon</span>
+                            <span class="tech-tag">Gateway</span>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="https://oregon-wonder-guide.lovable.app/" class="portfolio-link" target="_blank">View Live Site</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Join Our Portfolio?</h2>
+            <p>Let's build something amazing for your business - fast delivery, premium quality, unbeatable results</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-primary">Start Your Project</a>
+                <a href="#services" class="cta-secondary">View Services</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 LEVERAGEAI LLC. High-performance websites delivered fast.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Portfolio filtering functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioCards = document.querySelectorAll('.portfolio-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                portfolioCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        const cardCategories = card.getAttribute('data-category');
+                        if (cardCategories && cardCategories.includes(filterValue)) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    }
+                });
+            });
+        });
+        
+        // Scroll animation for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Initialize card animations
+        portfolioCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
